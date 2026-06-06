@@ -1,21 +1,34 @@
-# 🍳 Recetas Estrella
+# 🍳 Chef Recetas (Recetas Estrella)
 
-> Sistema inteligente y organizado para la administración y consulta de recetas de cocina, ingredientes y categorías gastronómicas desarrollado en Visual Studio y conectado a una base de datos MySQL. El sistema permite gestionar usuarios, categorías, ingredientes y recetas de manera sencilla y organizada, brindando una herramienta útil para almacenar y consultar información gastronómica de forma eficiente.
+> **Chef Recetas** es una aplicación de escritorio desarrollada en **C# (Windows Forms)** bajo el patrón de arquitectura **Modelo-Vista-Controller (MVC)**. El sistema está diseñado para centralizar y optimizar la administración de recetas culinarias, permitiendo un control estructurado de categorías, ingredientes individuales, pasos detallados de preparación y almacenamiento de imágenes (fotografías) en formato binario directo en la base de datos.
 
-![Visual Studio](https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual-studio&logoColor=white)
+Este sistema (también denominado *Recetas Estrella*) permite gestionar usuarios, categorías, ingredientes y recetas de manera sencilla y organizada, brindando una herramienta útil, robusta y limpia para almacenar y consultar información gastronómica de forma eficiente.
+
+### ✨ Características Principales
+* **Gestión Integral de Recetas:** Registro completo que incluye tiempos de preparación, porciones y niveles de dificultad (`fácil`, `media`, `difícil`).
+* **Control de Almacenamiento BLOB:** Carga y lectura dinámica de archivos de imagen tanto para los ingredientes como para el resultado final de los platillos.
+* **Módulo de Autenticación Seguro:** Acceso restringido mediante inicio de sesión con encriptación de contraseñas en SHA-256 a nivel de servidor.
+* **Arquitectura MVC Separada por Capas:** Estructura limpia que independiza la interfaz de usuario (*Views*), la lógica de negocio (*Controllers*), el mapeo de objetos (*Models*) y el acceso a datos (*DAL*).
+* **Persistencia de Datos Relacional:** Conectividad directa y eficiente con un servidor MySQL mediante el conector nativo `MySql.Data`.
+
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![.NET 8](https://img.shields.io/badge/.NET_8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-00758F?style=for-the-badge&logo=mysql&logoColor=white)
+![Windows Forms](https://img.shields.io/badge/Windows_Forms-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
 ---
 
 ## 👥 Integrantes del Equipo
 
-| Nombre Completo | Número de Control |
-| :--- | :---: |
-| 🧑‍💻 CHAVIRA RUÍZ JAZMIN | `24580007` |
-| 👩‍💻 DURAN TOLENTINO AMANDA NOHEMI | `24580009` |
-| 👩‍💻 GARCIA ESPINOZA ANDREA | `24580011` |
-| 🧑‍💻 ROMERO RAMIREZ ALEXANDER | `24580028` |
-| 👩‍💻 VILLAREAL VILLALOBOS NAIBY ADRIANA | `24580914` |
+El desarrollo e implementación de este proyecto fue realizado en conjunto por los siguientes integrantes:
+
+| Nombre Completo | Número de Control | Roles |
+| :--- | :---: | :---: |
+| 👩‍💻 CHAVIRA RUÍZ JAZMIN | `24580007` | Desarrollo & BD |
+| 👩‍💻 DURAN TOLENTINO AMANDA NOHEMI | `24580009` | Desarrollo & BD |
+| 👩‍💻 GARCIA ESPINOZA ANDREA | `24580011` | Desarrollo & BD |
+| 🧑‍💻 ROMERO RAMIREZ ALEXANDER | `24580028` | Desarrollo & BD |
+| 👩‍💻 VILLAREAL VILLALOBOS NAIBY ADRIANA | `24580914` | Desarrollo & BD |
 
 ---
 
@@ -24,80 +37,78 @@
 ### Requisitos Previos
 
 **Hardware Mínimo:**
-* Procesador Intel Core i3 o superior.
-* Memoria RAM de 4 GB o superior.
-* Espacio libre en disco de al menos 500 MB.
+* **Procesador:** Intel Core i3 o superior.
+* **Memoria RAM:** 4 GB o superior.
+* **Almacenamiento:** Espacio libre en disco de al menos 500 MB.
 
 **Software Requerido:**
-* Sistema Operativo Windows 10 o superior.
-* Visual Studio instalado.
-* MySQL Server y MySQL Workbench.
-* .NET Framework correspondiente al proyecto.
+* **Sistema Operativo:** Windows 10 o superior.
+* **IDE:** Visual Studio (.NET 8.0 o superior instalado).
+* **Gestor de BD:** MySQL Server y MySQL Workbench.
+
+---
 
 ### Pasos para Importar la BD y Configurar la Cadena de Conexión
 
-Esta aplicación es un recetario interactivo. Se puede descargar por medio del código de `.sln` para que solo necesites abrirlo en Visual Studio para poder ejecutarse. Sigue estos pasos:
+Esta aplicación se distribuye a través de un archivo de solución (`.sln`). El usuario final solo necesita abrirlo en Visual Studio para compilar y ejecutar el código fuente.
 
-1. **Descargar el proyecto:** Obtén la carpeta del proyecto *Recetas Estrella* y el archivo de la base de datos proporcionado.
+1. **Descargar el proyecto:** Descarga la solución completa de *Recetas Estrella* y el script de la base de datos correspondiente de este repositorio.
 2. **Importar la Base de Datos:**
-   * Abre **MySQL Workbench** y conéctate a tu servidor local.
-   * Ejecuta el script SQL proporcionado para crear la base de datos, las tablas y los registros iniciales del programa.
+   * Abre **MySQL Workbench** e ingresa a tu instancia local.
+   * Abre y **ejecuta el script SQL** proporcionado para generar las tablas, relaciones y procedimientos iniciales.
 3. **Configurar la Cadena de Conexión:**
-   * Abre la solución del proyecto en **Visual Studio** (abre el tercer archivo de la carpeta principal para ver el código).
-   * Verifica y actualiza la cadena de conexión a la base de datos con tus credenciales de acceso.
-   * *Recomendación:* Puedes agregar el usuario administrador directamente a tu base de datos local para no tener que cambiar el código de MySQL, o puedes cambiar y poner tu liga y contraseña del `root` para poder usarlo. Se recomienda usar la primera opción.
-4. **Ejecución:** Una vez que ambas partes estén configuradas, compila y ejecuta la aplicación. Podrás iniciar sesión con una cuenta registrada o con la cuenta de administrador. Desde el explorador de soluciones podrás ver los códigos de cada sección por si requieres realizar modificaciones.
+   * Abre la solución (`.sln`) en **Visual Studio** (abre el tercer archivo de la lista principal para cargar todos los módulos del código).
+   * Desde el *Explorador de Soluciones*, localiza la sección de configuración de acceso a datos (*DAL*) o los archivos del servidor.
+   * Modifica la cadena de conexión con la liga, usuario y contraseña de tu servidor local `root`.
+   * *Recomendación:* Puedes agregar las credenciales del administrador directamente en tu base de datos local para mantener la configuración por defecto y evitar alterar el código de conexión en MySQL.
+4. **Compilación y Ejecución:**
+   * Verifica que las dependencias de `MySql.Data` estén correctamente cargadas.
+   * Compila y ejecuta la aplicación desde Visual Studio.
+   * Inicia sesión con una cuenta de usuario previamente registrada o ingresa con los datos de la cuenta de administrador global.
 
 ---
 
 ## 📺 Liga al Video de Demostración
 
-Puedes ver el sistema en funcionamiento haciendo clic en la imagen de abajo o a través del enlace directo:
+Puedes visualizar el comportamiento dinámico del recetario en nuestro video de referencia:
 
-[![Ver Video de Demostración](https://img.youtube.com/vi/O4_nyyX341k/0.jpg)](https://youtu.be/O4_nyyX341k)
+[![Ver Video de Demostración](https://img.youtube.com/vi/O4_nyyX341k/0.jpg)](https://youtu.be/O4_nyyX341k?si=e6xa_d6t6HGBrK1h)
 
-🔗 **Enlace directo al video:** [https://youtu.be/O4_nyyX341k](https://youtu.be/O4_nyyX341k)
+🔗 **Enlace directo al video:** [https://youtu.be/O4_nyyX341k?si=e6xa_d6t6HGBrK1h](https://youtu.be/O4_nyyX341k?si=e6xa_d6t6HGBrK1h)
 
 ---
 
 ## 📸 Capturas de Pantalla Principales de la Aplicación
 
-### Interfaces de Control y Gestión Principal
+### Módulo de Login Inicial y Seguridad
 <p align="center">
-  <img width="941" height="494" alt="image" src="https://github.com/user-attachments/assets/18f025cf-6500-4fcf-970a-f8b267d18909" />
-  <img width="941" height="452" alt="image" src="https://github.com/user-attachments/assets/cfd05f8a-e61d-4cb1-9530-440584e69c2d" />
+  <img width="367" height="331" alt="Login inicial 1" src="https://github.com/user-attachments/assets/2787d175-3acb-4534-92a6-1baa390ab21e" />
+  <img width="369" height="332" alt="Login inicial 2" src="https://github.com/user-attachments/assets/e0cce7e5-5002-4e7c-9e9d-172b82df798d" />
 </p>
 
-### Formularios de Consulta y Herramientas
+### Registro de Nuevos Usuarios
 <p align="center">
-  <img width="508" height="378" alt="image" src="https://github.com/user-attachments/assets/83f729e4-ae48-4d64-9228-075d0c8fb922" />
-  <img width="941" height="100" alt="image" src="https://github.com/user-attachments/assets/19831634-e7db-4f78-80ca-7a70-01d7156" />
+  <img width="336" height="330" alt="Registro de usuario" src="https://github.com/user-attachments/assets/81897f47-6638-4fb7-bd76-ac8d631baa29" />
 </p>
 
-### Vistas Detalladas del Sistema
+### Gestión de Módulos (Vistas Principales y BLOBs)
 <p align="center">
-  <img width="405" height="733" alt="image" src="https://github.com/user-attachments/assets/41aff4dd-b30e-4cf5-b409-a0fd6ebe575a" />
-  <img width="427" height="588" alt="image" src="https://github.com/user-attachments/assets/335598a7-428a-4091-993a-f03f66fec9d8" />
-  <img width="428" height="633" alt="image" src="https://github.com/user-attachments/assets/4979a2be-76dc-421d-a0c2-df6d90773eec" />
+  <img width="1365" height="714" alt="Panel de Recetas" src="https://github.com/user-attachments/assets/38b1bc7e-ceef-4b8d-8fa3-914bb3d0077c" />
+  <img width="1365" height="714" alt="Control de Categorías" src="https://github.com/user-attachments/assets/735f7069-587b-45e7-acf0-cbaadcdf6210" />
 </p>
 
-### Ventanas Emergentes, Alertas e Iconografía
+### Administración de Ingredientes y Pasos de Preparación
 <p align="center">
-  <img width="387" height="400" alt="image" src="https://github.com/user-attachments/assets/e0754851-cdb8-4546-a06b-ffba9efb7ccb" />
-  <img width="505" height="475" alt="image" src="https://github.com/user-attachments/assets/674e9f7e-8ae7-472c-87c9-d05cae3c472a" />
-</p>
-
-<p align="center">
-  <img width="186" height="206" alt="image" src="https://github.com/user-attachments/assets/b84c102d-f28c-4c70-89f2-3bba5a9cda55" />
-  <img width="186" height="206" alt="image" src="https://github.com/user-attachments/assets/071f83ec-e2ea-44a4-95e9-7a74ad5279c0" />
-  <img width="180" height="241" alt="image" src="https://github.com/user-attachments/assets/f26f2247-65f0-4233-b24d-a7773a72f9c7" />
+  <img width="1365" height="718" alt="Edición de Ingredientes" src="https://github.com/user-attachments/assets/81982a01-6aee-4e8a-a761-4fd1b7b28777" />
+  <img width="743" height="373" alt="Visualización Detallada" src="https://github.com/user-attachments/assets/90e5b6c9-9b87-4ef3-823a-866d32cbee6e" />
+  <img width="1364" height="716" alt="Muestreo General" src="https://github.com/user-attachments/assets/16197992-a21b-402c-8436-a8b6c7c55be7" />
 </p>
 
 ---
 
 ## 📊 Diagrama ER de la Base de Datos
 
-A continuación se presenta el modelo Entidad-Relación que estructura la base de datos en MySQL:
+Estructura relacional de las tablas y mapeo de objetos para el almacenamiento del catálogo de platillos y credenciales protegidas:
 
 <p align="center">
   <img width="451" height="551" alt="Diagrama entidad-relacion" src="https://github.com/user-attachments/assets/3df74716-88bb-4290-a7a9-cd89bc4f4d9d" />
